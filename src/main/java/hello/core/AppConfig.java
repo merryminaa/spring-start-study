@@ -15,6 +15,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration //설정정보
 public class AppConfig {
 
+    // @Bean memberService -> new MemoryMemberRepository();
+    // @Bean orderService -> new MemoryMemberRepository();
+    // 이렇게된다면 각각 다른 MemoryMemberRepository가 생성되면서 싱글톤이 깨지는건 아닐까?
+
     @Bean //스프링 컨테이너에 등록ㄴ
     //애플리케이션의 실제 동작에 필요한 구현 객체를 생성
     //생성한 객체 인스턴스의 참조(레퍼런스)를 생성자를 통해서 주입(연결)

@@ -15,7 +15,7 @@ public class OrderServiceImpl implements OrderService {
     // DIP 위반: OrderServiceImpl은 인터페이스인 discountPolicy에만 의존하는 것처럼 보이지만 실은 구체 클래스인 FixDiscountPolicy에도 의존하고 있음
     // OCP 위반: 변경발생으로 인해 클라이언트 코드 수정이 불가피
 
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
     private DiscountPolicy discountPolicy;
 
     //생성자를 통한 주입
@@ -30,5 +30,10 @@ public class OrderServiceImpl implements OrderService {
         int discountPrice = discountPolicy.discount(member, itemPrice);
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
+    }
+
+    //테스트용
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
 }
